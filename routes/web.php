@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KerjasamaController;
+use App\Http\Controllers\PengajuanController;
+use App\Http\Controllers\ExportController;
 
 
 
@@ -34,6 +36,14 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/hapus-kerjasama/{id}', [KerjasamaController::class, 'destroy'])->name('hapus-kerjasama');
     Route::get('/detail-kerjasama/{id}', [KerjasamaController::class, 'detail'])->name('detail-kerjasama');
     Route::get('/data-kerjasama', [KerjasamaController::class, 'cari'])->name('cari-kerjasama');
+
+    Route::get('/pengajuan-kerja-sama', [PengajuanController::class, 'pengajuanKerjasama']);
+    Route::post('/pengajuan-kerjasama', [PengajuanController::class, 'store']);
+
+    // routes/web.php
+
+    Route::get('/export-pdf/{id}', [ExportController:: class, 'exportPDF'])->name('export-pdf');
+
 });
 Route::get('/test', [HomeController::class, 'dataChartProdi']);
 

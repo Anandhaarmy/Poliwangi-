@@ -106,9 +106,9 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
-                                            <th scope="col">Nomor Mou</th>
+                                            <th scope="col">Nomor Mou Poliwangi</th>
                                             <th scope="col">Nama Instansi</th>
-                                            <th scope="col">Nomor Perusahaan</th>
+                                            <th scope="col">Nomor Instansi</th>
                                             <th scope="col">Contact Person</th>                                            <th scope="col">Kategori</th>
                                             <th scope="col">Tanggal Mulai</th>
                                             <th scope="col">Tanggal Berakhir</th>
@@ -126,7 +126,7 @@
                                                 <td><a href="/download/{{ $item->nomor_mou }}">{{ $item->nomor_mou }}</a>
                                                 </td>
                                                 <td>{{ $item->nama_instansi }}</td>
-                                                <td>{{ $item->nomor_perusahaan }}</td>
+                                                <td>{{ $item->nomor_instansi }}</td>
                                                 <td>{{ $item->contact_person }}</td>
                                                 <td>{{ $item->kategori->nama_kategori }}</td>
                                                 <td>{{ $item->tgl_mulai }}</td>
@@ -141,8 +141,10 @@
                                                             class="icon-ganteng fa-solid fa-file-arrow-down"></i>
                                                 <td class=" ">
                                                     <div class="action">
+                                                        @if(Auth::user()->role == 'admin')
                                                         <a href="{{ route('edit-kerjasama', $item->id_kerjasama) }}"><i
                                                                 class="icon-ganteng fa-solid fa-pen-to-square"></i></a>
+                                                        @endif
                                                         <a href="{{ route('detail-kerjasama', $item->id_kerjasama) }}"><i
                                                                 class=" ml-1 icon-ganteng fa-solid fa-eye"></i></a>
 
